@@ -25,6 +25,7 @@ import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
+import { Comment } from './Giscus'
 import styles from './styles.module.css'
 
 // -----------------------------------------------------------------------------
@@ -199,6 +200,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     [block, recordMap, isBlogPost]
   )
 
+  const comment = React.useMemo(() => <Comment />, [])
+
   const footer = React.useMemo(() => <Footer />, [])
 
   if (router.isFallback) {
@@ -277,6 +280,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
+        pageFooter={comment}
         footer={footer}
       />
     </>
