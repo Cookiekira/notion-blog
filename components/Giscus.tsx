@@ -1,7 +1,10 @@
+import { useDarkMode } from '@/lib/use-dark-mode'
 import Giscus from '@giscus/react'
 import * as React from 'react'
 
 export function Comment() {
+  const { isDarkMode } = useDarkMode()
+  const theme = isDarkMode ? 'dark_dimmed' : 'light'
   return (
     <Giscus
       id='comments'
@@ -14,7 +17,7 @@ export function Comment() {
       reactionsEnabled='1'
       emitMetadata='0'
       inputPosition='top'
-      theme='preferred_color_scheme'
+      theme={theme}
       lang='zh-CN'
       loading='lazy'
     />
